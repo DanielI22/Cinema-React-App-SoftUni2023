@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './styles/global.css'
+import MovieCard from './components/MovieCard';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [name, setName] = useState("Test");
+  function onClick() {
+    if(name==="Test") {
+      setName("NewName");
+    }
+    else {
+      setName("Test");
+    }
+  }
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <MovieCard 
+        title = {name}
+        genre="Comedy" 
+        posterURL="https://media.istockphoto.com/id/911590226/vector/movie-time-vector-illustration-cinema-poster-concept-on-red-round-background-composition-with.jpg?s=2048x2048&w=is&k=20&c=F9qz8jEdNbZJ27nesDGqihT8MysRhZZjzv7IEPWJ0GY="
+        onClick={onClick}
+      />
+    </div>
   )
 }
 
