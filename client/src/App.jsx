@@ -1,27 +1,33 @@
-import './styles/global.css'
-import MovieCard from './components/MovieCard';
-import { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Movies from './pages/Movies/Movies';
+import NotFound from './pages/NotFound/NotFound';
+import MovieDetails from './pages/MovieDetails/MovieDetails'
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
 
 function App() {
-
-  const [name, setName] = useState("Test");
-  function onClick() {
-    if(name==="Test") {
-      setName("NewName");
-    }
-    else {
-      setName("Test");
-    }
-  }
   return (
+  <Router>
     <div>
-      <MovieCard 
-        title = {name}
-        genre="Comedy" 
-        posterURL="https://media.istockphoto.com/id/911590226/vector/movie-time-vector-illustration-cinema-poster-concept-on-red-round-background-composition-with.jpg?s=2048x2048&w=is&k=20&c=F9qz8jEdNbZJ27nesDGqihT8MysRhZZjzv7IEPWJ0GY="
-        onClick={onClick}
-      />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="/reservations" element="{<Reservations />}" />
+        <Route path="/favourites" element="{<Favourites />}" />
+        <Route path="/movies/:movieId/booking" element="{<Booking />}" />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </div>
+  </Router>
   )
 }
 
