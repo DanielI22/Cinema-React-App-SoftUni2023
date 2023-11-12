@@ -8,3 +8,7 @@ export function formatIsoDate(isoDate) {
 
     return `${hours}:${minutes} ${day}/${month}/${year}`;
 }
+
+export function genreToString(genres) {
+    return genres.join(", ");
+}

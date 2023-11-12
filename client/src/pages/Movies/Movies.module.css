@@ -1,7 +1,47 @@
+.containterTest {
+    min-height: 85vh;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 100px;
+}
+
+
+.searchContainer {
+    margin-bottom: 10px;
+}
+
+.searchInput {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.genreFilter {
+    margin-bottom: 20px;
+}
+
+.genreSelect {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 .moviesContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px 100px;
     background-color: #ecf0f1;
+}
+
+.noMovies {
+    font-size: 1.5rem;
+    text-align: center;
 }

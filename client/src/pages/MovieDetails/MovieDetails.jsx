@@ -8,6 +8,7 @@ import { Tooltip as ReactTooltip } from 'react-tooltip'
 import * as movieService from "../../services/movieService";
 import { formatIsoDate } from "../../services/utils"
 import ReviewList from '../../components/ReviewList/ReviewList';
+import { genreToString } from '../../services/utils';
 
 export default function MovieDetails() {
     const { movieId } = useParams();
@@ -40,7 +41,7 @@ export default function MovieDetails() {
                 <img src={movie.posterUrl} alt={movie.title} className={styles.poster} />
                 <div className={styles.info}>
                     <h1 className={styles.title}>{movie.title} ({movie.year})</h1>
-                    <p className={styles.genre}>{movie.genre}</p>
+                    <p className={styles.genre}>{genreToString(movie.genre)}</p>
                     <p className={styles.description}>{movie.description}</p>
                     <div className={styles.favouritesContainer}>
                         <p>Add to Favourites </p>

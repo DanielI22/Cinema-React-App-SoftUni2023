@@ -16,9 +16,12 @@ export default function MovieCarousel() {
     const sliderSettings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 600,
         slidesToShow: 4,
         slidesToScroll: 1,
+        draggable: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
     };
