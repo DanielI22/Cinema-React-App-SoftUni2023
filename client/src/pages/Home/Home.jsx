@@ -3,7 +3,7 @@ import MovieCarousel from '../../components/MovieCarousel/MovieCarousel';
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 min-h-[90vh]">
       <h1 className={styles.welcomeTitle}>Welcome to ReactCineX</h1>
       <p className={styles.welcomeDescription}>
         Discover some of the best movies and book your reservations.
