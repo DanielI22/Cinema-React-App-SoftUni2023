@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
+import { PATHS } from '../../utils/constants';
 
 export default function Register() {
     const [username, setUsername] = useState('');
@@ -68,7 +69,7 @@ export default function Register() {
                 {error && <div className={styles.errorMessage}>{error}</div>}
                 <button type="submit" className={styles.registerButton}>Register</button>
                 <div className={styles.loginPrompt}>
-                    Already have an account? <Link to="/login" className={styles.loginLink}>Login</Link>
+                    Already have an account? <Link to={PATHS.LOGIN_PATH} className={styles.loginLink}>Login</Link>
                 </div>
             </form>
         </div>

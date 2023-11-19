@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Login.module.css'; 
 import { Link } from 'react-router-dom';
+import { PATHS } from '../../utils/constants';
 
 
 export default function Login() {
@@ -37,7 +38,7 @@ export default function Login() {
                 </div>
                 <button type="submit" className={styles.loginButton}>Log In</button>
                 <div className={styles.registerPrompt}>
-                   Don&apos;t have an account? <Link to="/register" className={styles.registerLink}>Register</Link>
+                   Don&apos;t have an account? <Link to={PATHS.REGISTER_PATH} className={styles.registerLink}>Register</Link>
                 </div>
             </form>
         </div>

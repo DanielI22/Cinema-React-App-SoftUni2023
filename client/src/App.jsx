@@ -11,21 +11,25 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Booking from './pages/Booking/Booking';
+import { ToastContainer } from 'react-toastify';
+import { PATHS } from './utils/constants';
 
 function App() {
   return (
   <Router>
     <div>
       <Header />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-        <Route path="/reservations" element="{<Reservations />}" />
-        <Route path="/favourites" element="{<Favourites />}" />
-        <Route path="/movies/:movieId/booking" element="{<Booking />}" />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path={PATHS.MOVIES_PATH} element={<Movies />} />
+        <Route path={`${PATHS.MOVIES_PATH}/:movieId`} element={<MovieDetails />} />
+        <Route path={PATHS.RESERVATION_PATH} element="{<Reservations />}" />
+        <Route path={PATHS.FAVOURITES_PATH} element="{<Favourites />}" />
+        <Route path={`${PATHS.MOVIES_PATH}/:movieId${PATHS.BOOKING_PATH}`} element={<Booking />} />
+        <Route path={PATHS.LOGIN_PATH} element={<Login />} />
+        <Route path={PATHS.REGISTER_PATH} element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

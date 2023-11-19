@@ -6,14 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import * as movieService from "../../services/movieService";
-import { formatIsoDate } from "../../services/utils"
+import { formatIsoDate } from "../../utils/functions"
 import ReviewList from '../../components/ReviewList/ReviewList';
-import { genreToString } from '../../services/utils';
+import { genreToString } from '../../utils/functions';
+import { PATHS } from '../../utils/constants';
 
 export default function MovieDetails() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
-
     useEffect(() => {
         movieService.getOne(movieId)
             .then(result => setMovie(result))
@@ -25,7 +25,6 @@ export default function MovieDetails() {
     }
 
     const handleSubmitReview = () => {
-        // Handle the submission of the review
         console.log("Review submitted");
     };
 
@@ -35,6 +34,7 @@ export default function MovieDetails() {
         content: "I loved this movie! The special effects were amazing and the storyline kept me engaged the entire time."
     }]
 
+    localStorage.setItem('selectedMoviePrice', movie.price);
     return (
         <div className={styles.movieDetails}>
             <div className={styles.detailsContainer}>
@@ -54,7 +54,7 @@ export default function MovieDetails() {
             <div className={styles.additionalInfo}>
                 <p className={styles.startTime}>Showtime - {formatIsoDate(movie.startTime)}</p>
                 <ReactTooltip id="priceTooltip" place="top" effect="solid" />
-                <Link to={`/movies/${movie._id}/booking`} data-tooltip-content={`Price: $${movie.price}`} data-tooltip-id="priceTooltip" className={`${styles.bookingButton}`}>
+                <Link to={`${PATHS.MOVIES_PATH}/${movie._id}${PATHS.BOOKING_PATH}`} data-tooltip-content={`Price: $${movie.price}`} data-tooltip-id="priceTooltip" className={`${styles.bookingButton}`}>
                     Book a Ticket
                 </Link>
             </div>
