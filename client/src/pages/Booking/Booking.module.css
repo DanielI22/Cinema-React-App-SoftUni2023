@@ -10,8 +10,6 @@
     width: 80%;
   }
   
-
-  
   .seatRow {
     margin-bottom: 10px;
   }
@@ -36,16 +34,16 @@
   }
   
   .reservedSeat {
-    color: red; /* Color for reserved seats */
+    color: red;
     cursor: default;
   }
   
   .selectedSeat {
-    color: blue; /* Color for selected seats */
+    color: blue;
   }
 
   .selectSeatsLabel {
-    margin-top: 20px;
+    margin: 20px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;

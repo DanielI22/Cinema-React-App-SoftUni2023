@@ -20,3 +20,15 @@ export const addReservation = async (reservationData) => {
     const result = await response.json();
     return result;
 };
+
+export const GetMovieSeats = async (movieId) => {
+    const response = await fetch(`${baseUrl}?where=movieId%3D"${movieId}"`);
+    const reservations = await response.json();
+
+    return reservations.reduce((acc, reservation) => {
+        if (reservation.seats && Array.isArray(reservation.seats)) {
+            return acc.concat(reservation.seats);
+        }
+        return acc;
+    }, []);
+}

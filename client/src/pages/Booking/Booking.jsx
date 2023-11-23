@@ -2,23 +2,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChair } from '@fortawesome/free-solid-svg-icons';
 import styles from './Booking.module.css';
 import { useState, useEffect, useRef } from 'react';
-import { TOTAL_ROWS, SEATS_PER_ROW, MAX_SEATS } from '../../utils/constants';
-import { ToastContainer, toast } from 'react-toastify';
+import { TOTAL_ROWS, SEATS_PER_ROW, MAX_SEATS, PATHS } from '../../utils/constants';
+import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import  *  as reservationService from '../../services/reservationService'
+import  *  as movieService from '../../services/movieService'
 
 export default function Booking() {
     const { movieId } = useParams();
-    const [reservedSeats, setReservedSeats] = useState(['3E']);
+    const [price, setPrice] = useState(0);
+    const [reservedSeats, setReservedSeats] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const navigate = useNavigate();
-    const price = localStorage.getItem('selectedMoviePrice')
 
     useEffect(() => {
-        // Fetch reserved seats from your backend and update state
-        // setReservedSeats(fetchedReservedSeats);
-    }, []);
+        movieService.getOne(movieId)
+            .then(result => setPrice(result.price))
+            .catch(err => console.log(err))
+    }, [movieId]);
+
+    useEffect(() => {
+        const fetchReservations = async () => {
+          try {
+            const distinctSeats = await reservationService.GetMovieSeats(movieId);
+            setReservedSeats(distinctSeats);
+          } catch (error) {
+            toast.error('Fail to fetch reservated seats: ' + error.message, {
+                position: "top-center",
+                autoClose: false,
+            });
+          }
+        };
+    
+        fetchReservations();
+      }, [movieId]);
 
     const isSeatReserved = (seatId) => reservedSeats.includes(seatId);
     const isSeatSelected = (seatId) => selectedSeats.includes(seatId);
@@ -80,7 +98,6 @@ export default function Booking() {
         try {
             const reservationData = {
                 movieId: movieId,
-                userId: '456',
                 seats: selectedSeats,
             };
             const result = await reservationService.addReservation(reservationData);
@@ -91,7 +108,7 @@ export default function Booking() {
                 autoClose: false,
             });
 
-            navigate('/');
+            navigate(PATHS.HOME);
         }
     };
 

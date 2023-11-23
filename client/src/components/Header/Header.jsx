@@ -1,12 +1,13 @@
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
+import { PATHS } from '../../utils/constants';
 
 export default function Header() {
     return (
         <header className={styles.header}>
-            <Link to="/"><img className={styles.logo} src="/logo.png" alt="ReactCineX" /></Link>
+            <Link to={PATHS.HOME}><img className={styles.logo} src="/logo.png" alt="ReactCineX" /></Link>
             <div className={styles.navLeft}>
-                <Link to="/movies">Our Movies</Link>
+                <Link to={PATHS.MOVIES}>Our Movies</Link>
             </div>
             <div className={styles.navRight}>
                 <div className={styles.profileDropdown}>
@@ -16,8 +17,8 @@ export default function Header() {
                         <Link to="/favourites">Favourites</Link>
                     </div>
                 </div>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
+                <Link to={PATHS.LOGIN}>Login</Link>
+                <Link to={PATHS.REGISTER}>Register</Link>
                 <Link to="/logout">Log out</Link>
             </div>
         </header>

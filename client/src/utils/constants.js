@@ -1,12 +1,13 @@
 export const API_BASE_URL = "http://localhost:3030/data";
 
 export const PATHS = {
-    MOVIES_PATH: "/movies",
-    RESERVATION_PATH: "/reservations",
-    FAVOURITES_PATH: "/favourites",
-    BOOKING_PATH: "/booking",
-    LOGIN_PATH: "/login",
-    REGISTER_PATH: "/register"
+    HOME: "/",
+    MOVIES: "/movies",
+    RESERVATION: "/reservations",
+    FAVOURITES: "/favourites",
+    BOOKING: "/booking",
+    LOGIN: "/login",
+    REGISTER: "/register"
 };
 
 export const TOTAL_ROWS = 3;

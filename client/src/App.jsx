@@ -22,14 +22,14 @@ function App() {
       <Header />
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path={PATHS.MOVIES_PATH} element={<Movies />} />
-        <Route path={`${PATHS.MOVIES_PATH}/:movieId`} element={<MovieDetails />} />
-        <Route path={PATHS.RESERVATION_PATH} element="{<Reservations />}" />
-        <Route path={PATHS.FAVOURITES_PATH} element="{<Favourites />}" />
-        <Route path={`${PATHS.MOVIES_PATH}/:movieId${PATHS.BOOKING_PATH}`} element={<Booking />} />
-        <Route path={PATHS.LOGIN_PATH} element={<Login />} />
-        <Route path={PATHS.REGISTER_PATH} element={<Register />} />
+        <Route path={PATHS.HOME} element={<Home />} />
+        <Route path={PATHS.MOVIES} element={<Movies />} />
+        <Route path={`${PATHS.MOVIES}/:movieId`} element={<MovieDetails />} />
+        <Route path={PATHS.RESERVATION} element="{<Reservations />}" />
+        <Route path={PATHS.FAVOURITES} element="{<Favourites />}" />
+        <Route path={`${PATHS.MOVIES}/:movieId${PATHS.BOOKING}`} element={<Booking />} />
+        <Route path={PATHS.LOGIN} element={<Login />} />
+        <Route path={PATHS.REGISTER} element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

@@ -34,7 +34,6 @@ export default function MovieDetails() {
         content: "I loved this movie! The special effects were amazing and the storyline kept me engaged the entire time."
     }]
 
-    localStorage.setItem('selectedMoviePrice', movie.price);
     return (
         <div className={styles.movieDetails}>
             <div className={styles.detailsContainer}>
@@ -54,7 +53,7 @@ export default function MovieDetails() {
             <div className={styles.additionalInfo}>
                 <p className={styles.startTime}>Showtime - {formatIsoDate(movie.startTime)}</p>
                 <ReactTooltip id="priceTooltip" place="top" effect="solid" />
-                <Link to={`${PATHS.MOVIES_PATH}/${movie._id}${PATHS.BOOKING_PATH}`} data-tooltip-content={`Price: $${movie.price}`} data-tooltip-id="priceTooltip" className={`${styles.bookingButton}`}>
+                <Link to={`${PATHS.MOVIES}/${movie._id}${PATHS.BOOKING}`} data-tooltip-content={`Price: $${movie.price}`} data-tooltip-id="priceTooltip" className={`${styles.bookingButton}`}>
                     Book a Ticket
                 </Link>
             </div>

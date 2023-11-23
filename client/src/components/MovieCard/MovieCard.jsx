@@ -5,7 +5,7 @@ import { PATHS } from '../../utils/constants';
 export default function MovieCard({ movie }) {
   return (
     <div className={styles.card}>
-      <Link to={`${PATHS.MOVIES_PATH}/${movie._id}`} className={styles.card}>
+      <Link to={`${PATHS.MOVIES}/${movie._id}`} className={styles.card}>
         <img src={movie.posterUrl} alt={movie.title} className={styles.poster} />
         <div className={styles.info}>
           <h3 className={styles.title}>{movie.title}</h3>
