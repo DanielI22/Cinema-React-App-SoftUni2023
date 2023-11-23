@@ -7,12 +7,14 @@ import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import  *  as reservationService from '../../services/reservationService'
 import  *  as movieService from '../../services/movieService'
+import Spinner from '../../components/Spinner/Spinner';
 
 export default function Booking() {
     const { movieId } = useParams();
     const [price, setPrice] = useState(0);
     const [reservedSeats, setReservedSeats] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
     const navigate = useNavigate();
 
@@ -23,10 +25,12 @@ export default function Booking() {
     }, [movieId]);
 
     useEffect(() => {
+        setIsLoading(true)
         const fetchReservations = async () => {
           try {
             const distinctSeats = await reservationService.GetMovieSeats(movieId);
             setReservedSeats(distinctSeats);
+            setIsLoading(false);
           } catch (error) {
             toast.error('Fail to fetch reservated seats: ' + error.message, {
                 position: "top-center",
@@ -120,7 +124,7 @@ export default function Booking() {
             <div className={styles.screenLabel}>Screen</div>
             <div className={styles.selectSeatsLabel}>Please select your seats</div>
             <div className={styles.seatsContainer}>
-                {createSeatLayout()}
+                {isLoading ? <Spinner /> : createSeatLayout()}
             </div>
             <div className={styles.priceLabel}>
                 Total Price: ${totalPrice}

@@ -3,6 +3,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import * as movieService from "../../services/movieService";
 import { useState, useEffect } from "react";
 import styles from "./MovieCarousel.module.css"
+import Spinner from "../Spinner/Spinner";
 
 export default function MovieCarousel() {
     const [movies, setMovies] = useState([]);
@@ -28,13 +29,15 @@ export default function MovieCarousel() {
 
     return (
         <div className={styles.carouselContainer}>
-            <Slider {...sliderSettings}>
-                {movies.map(movie => (
-                    <MovieCard key={movie._id}
-                        movie={{ ...movie }}
-                    />
-                ))}
-            </Slider>
+            {movies.length ? (
+                <Slider {...sliderSettings}>
+                    {movies.map(movie => (
+                        <MovieCard key={movie._id} movie={{ ...movie }} />
+                    ))}
+                </Slider>
+            ) : (
+                <Spinner />
+            )}
         </div>
     )
 

@@ -2,17 +2,26 @@ import { useEffect, useState } from "react";
 import * as movieService from "../../services/movieService";
 import styles from "./Movies.module.css";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
-    const [genres, setGenres] = useState([])
+    const [genres, setGenres] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('');
 
     useEffect(() => {
+        setIsLoading(true);
         movieService.getAll()
-            .then(result => setMovies(result))
-            .catch(err => console.log(err))
+            .then(result => {
+                setMovies(result);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setIsLoading(false);
+            });
     }, []);
 
     useEffect(() => {
@@ -36,7 +45,7 @@ export default function Movies() {
                 />
                 <select
                     value={selectedGenre}
-                    onChange={(e) => {setSelectedGenre(e.target.value); setSearchQuery('')}}
+                    onChange={(e) => { setSelectedGenre(e.target.value); setSearchQuery('') }}
                     className={styles.genreSelect}
                 >
                     <option value="">All Genres</option>
@@ -45,14 +54,20 @@ export default function Movies() {
                     ))}
                 </select>
             </div>
-            {filteredMovies.length > 0 ? <div className={styles.moviesContainer}>
-                {filteredMovies.map(movie => (
-                    <MovieCard
-                        key={movie._id}
-                        movie={{ ...movie }}
-                    />
-                ))}
-            </div> : <div className={styles.noMovies}>No movies match your criteria</div>}
+
+            {isLoading ? (
+                <Spinner />
+            ) : (
+                filteredMovies.length ? (
+                    <div className={styles.moviesContainer}>
+                        {filteredMovies.map(movie => (
+                            <MovieCard key={movie._id} movie={{ ...movie }} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className={styles.noMovies}>No movies match your criteria</div>
+                )
+            )}
         </div>)
 }
 

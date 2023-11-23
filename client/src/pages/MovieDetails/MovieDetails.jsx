@@ -10,6 +10,7 @@ import { formatIsoDate } from "../../utils/functions"
 import ReviewList from '../../components/ReviewList/ReviewList';
 import { genreToString } from '../../utils/functions';
 import { PATHS } from '../../utils/constants';
+import Spinner from '../../components/Spinner/Spinner';
 
 export default function MovieDetails() {
     const { movieId } = useParams();
@@ -21,7 +22,7 @@ export default function MovieDetails() {
     }, [movieId]);
 
     if (!movie) {
-        return <div>Loading...</div>;
+        return <Spinner />;
     }
 
     const handleSubmitReview = () => {

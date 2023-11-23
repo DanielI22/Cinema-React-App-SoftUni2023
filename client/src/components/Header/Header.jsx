@@ -8,12 +8,10 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
     const {
-        isAdmin,
         isAuthenticated,
         username,
     } = useContext(AuthContext);
 
-    console.log(isAdmin)
     return (
         <header className={styles.header}>
             <Link to={PATHS.HOME}><img className={styles.logo} src="/logo.png" alt="ReactCineX" /></Link>
