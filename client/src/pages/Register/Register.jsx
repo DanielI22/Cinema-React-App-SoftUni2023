@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
 import { PATHS } from '../../utils/constants';
+import AuthContext from "../../contexts/authContext"
 
 export default function Register() {
     const [username, setUsername] = useState('');
@@ -9,8 +10,10 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const { registerSubmitHandler } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
         if (password.length < 3) {
             setError("Password must be at least 3 characters long.")
@@ -20,10 +23,11 @@ export default function Register() {
         if (confirmPassword !== password) {
             setError('Passwords do not match!');
             return
-        } 
+        }
 
         setError('');
-        console.log('Register with:', username, email, password);
+
+        registerSubmitHandler({ username, email, password })
     };
 
     return (
@@ -69,7 +73,7 @@ export default function Register() {
                 {error && <div className={styles.errorMessage}>{error}</div>}
                 <button type="submit" className={styles.registerButton}>Register</button>
                 <div className={styles.loginPrompt}>
-                    Already have an account? <Link to={PATHS.LOGIN_PATH} className={styles.loginLink}>Login</Link>
+                    Already have an account? <Link to={PATHS.LOGIN} className={styles.loginLink}>Login</Link>
                 </div>
             </form>
         </div>

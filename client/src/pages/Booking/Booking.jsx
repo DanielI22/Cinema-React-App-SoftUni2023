@@ -100,16 +100,19 @@ export default function Booking() {
                 movieId: movieId,
                 seats: selectedSeats,
             };
-            const result = await reservationService.addReservation(reservationData);
-            console.log('Reservation successful', result);
+            await reservationService.addReservation(reservationData);
+            toast.success('Your Reservation is completed. For more information see Reservations', {
+                position: "top-center",
+                autoClose: 6000,
+            });
         } catch (error) {
             toast.error('Reservation failed: ' + error.message, {
                 position: "top-center",
                 autoClose: false,
             });
 
-            navigate(PATHS.HOME);
         }
+        navigate(PATHS.HOME);
     };
 
     return (

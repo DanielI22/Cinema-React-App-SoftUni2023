@@ -2,16 +2,17 @@ import { useState } from 'react';
 import styles from './Login.module.css'; 
 import { Link } from 'react-router-dom';
 import { PATHS } from '../../utils/constants';
-
+import AuthContext from "../../contexts/authContext"
+import { useContext } from 'react';
 
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const { loginSubmitHandler } = useContext(AuthContext);
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle the login logic here
-        console.log('Login with:', username, password);
+        loginSubmitHandler({ email, password })
     };
 
     return (
@@ -20,10 +21,10 @@ export default function Login() {
                 <h2>Login</h2>
                 <div className={styles.inputGroup}>
                     <input
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>

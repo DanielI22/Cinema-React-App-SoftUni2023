@@ -14,27 +14,32 @@ import Register from './pages/Register/Register';
 import Booking from './pages/Booking/Booking';
 import { ToastContainer } from 'react-toastify';
 import { PATHS } from './utils/constants';
+import { AuthProvider } from './contexts/authContext';
+import Logout from './pages/Logout/Logout';
 
 function App() {
   return (
-  <Router>
-    <div>
-      <Header />
-      <ToastContainer />
-      <Routes>
-        <Route path={PATHS.HOME} element={<Home />} />
-        <Route path={PATHS.MOVIES} element={<Movies />} />
-        <Route path={`${PATHS.MOVIES}/:movieId`} element={<MovieDetails />} />
-        <Route path={PATHS.RESERVATION} element="{<Reservations />}" />
-        <Route path={PATHS.FAVOURITES} element="{<Favourites />}" />
-        <Route path={`${PATHS.MOVIES}/:movieId${PATHS.BOOKING}`} element={<Booking />} />
-        <Route path={PATHS.LOGIN} element={<Login />} />
-        <Route path={PATHS.REGISTER} element={<Register />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </div>
-  </Router>
+    <Router>
+      <AuthProvider>
+        <div>
+          <Header />
+          <ToastContainer />
+          <Routes>
+            <Route path={PATHS.HOME} element={<Home />} />
+            <Route path={PATHS.MOVIES} element={<Movies />} />
+            <Route path={`${PATHS.MOVIES}/:movieId`} element={<MovieDetails />} />
+            <Route path={PATHS.RESERVATION} element="{<Reservations />}" />
+            <Route path={PATHS.FAVOURITES} element="{<Favourites />}" />
+            <Route path={`${PATHS.MOVIES}/:movieId${PATHS.BOOKING}`} element={<Booking />} />
+            <Route path={PATHS.LOGIN} element={<Login />} />
+            <Route path={PATHS.REGISTER} element={<Register />} />
+            <Route path={PATHS.LOGOUT} element={<Logout />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </div>
+      </AuthProvider>
+    </Router>
   )
 }
 

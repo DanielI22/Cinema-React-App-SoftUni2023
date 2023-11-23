@@ -33,6 +33,7 @@
     font-size: 1.2rem;
     position: relative;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .dropdownContent {
@@ -57,4 +58,10 @@
 
 .profileDropdown:hover .dropdownContent {
     display: block;
+}
+
+.profileButton {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
 }
