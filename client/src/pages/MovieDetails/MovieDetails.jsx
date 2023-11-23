@@ -7,14 +7,16 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import * as movieService from "../../services/movieService";
 import { formatIsoDate } from "../../utils/functions"
-import ReviewList from '../../components/ReviewList/ReviewList';
 import { genreToString } from '../../utils/functions';
 import { PATHS } from '../../utils/constants';
 import Spinner from '../../components/Spinner/Spinner';
+import ReviewArea from '../../components/ReviewArea/ReviewArea';
+
 
 export default function MovieDetails() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
+
     useEffect(() => {
         movieService.getOne(movieId)
             .then(result => setMovie(result))
@@ -24,16 +26,6 @@ export default function MovieDetails() {
     if (!movie) {
         return <Spinner />;
     }
-
-    const handleSubmitReview = () => {
-        console.log("Review submitted");
-    };
-
-    const reviews = [{
-        id: "review1",
-        author: "Jane Doe",
-        content: "I loved this movie! The special effects were amazing and the storyline kept me engaged the entire time."
-    }]
 
     return (
         <div className={styles.movieDetails}>
@@ -58,13 +50,7 @@ export default function MovieDetails() {
                     Book a Ticket
                 </Link>
             </div>
-            <div className={styles.reviewArea}>
-                <textarea className={styles.reviewTextarea} placeholder="Leave a review..."></textarea>
-                <button onClick={handleSubmitReview} className={styles.submitButton}>Send</button>
-                <div className={styles.reviewList}>
-                    <ReviewList reviews={reviews} />
-                </div>
-            </div>
+            <ReviewArea />
         </div>
     );
 }

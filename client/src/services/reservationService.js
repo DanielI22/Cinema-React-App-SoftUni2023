@@ -1,7 +1,6 @@
 import { API_BASE_URL } from "../utils/constants";
 import * as request from "../lib/request"
 
-
 const baseUrl = `${API_BASE_URL}/reservations`;
 
 export const addReservation = async (reservationData) => {
