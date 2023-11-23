@@ -46,6 +46,7 @@ export const AuthProvider = ({
     const logoutHandler = () => {
         setAuth({});
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('isAdmin');
     };
 
     const values = {
