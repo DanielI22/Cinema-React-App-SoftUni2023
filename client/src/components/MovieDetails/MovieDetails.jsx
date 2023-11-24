@@ -41,12 +41,14 @@ export default function MovieDetails() {
     const handleFavouriteClick = async () => {
         if (favourite) {
             await favouriteService.deleteFavourite(favourite._id)
+            toast.success("Removed from favourites")
             setFavourite(null);
         } else {
             const favouriteData = {
                 movieId: movieId,
             };
             const favourite = await favouriteService.addFavourite(favouriteData);
+            toast.success("Added to favourites")
             setFavourite(favourite);
         }
     };
