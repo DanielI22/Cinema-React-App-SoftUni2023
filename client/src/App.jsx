@@ -3,20 +3,22 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Movies from './pages/Movies/Movies';
-import NotFound from './pages/NotFound/NotFound';
-import MovieDetails from './pages/MovieDetails/MovieDetails'
+import Home from './components/Home/Home';
+import Movies from './components/Movies/Movies';
+import NotFound from './components/NotFound/NotFound';
+import MovieDetails from './components/MovieDetails/MovieDetails'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Booking from './pages/Booking/Booking';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Booking from './components/Booking/Booking';
 import { ToastContainer } from 'react-toastify';
 import { PATHS } from './utils/constants';
 import { AuthProvider } from './contexts/authContext';
-import Logout from './pages/Logout/Logout';
+import Logout from './components/Logout/Logout';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Favourites from './components/Favourites/Favourites';
+import Reservations from './components/Reservations/Reservations';
 
 function App() {
   return (
@@ -29,8 +31,8 @@ function App() {
             <Route path={PATHS.HOME} element={<Home />} />
             <Route path={PATHS.MOVIES} element={<Movies />} />
             <Route path={`${PATHS.MOVIES}/:movieId`} element={<MovieDetails />} />
-            <Route path={PATHS.RESERVATION} element="{<ProtectedRoute><Reservations /></ProtectedRoute>}" />
-            <Route path={PATHS.FAVOURITES} element="{<ProtectedRoute><Favourites /></ProtectedRoute>}" />
+            <Route path={PATHS.RESERVATIONS} element={<Reservations />} />
+            <Route path={PATHS.FAVOURITES} element={<Favourites />} />
             <Route path={`${PATHS.MOVIES}/:movieId${PATHS.BOOKING}`} element={<ProtectedRoute><Booking /></ProtectedRoute>} />
             <Route path={PATHS.LOGIN} element={<Login />} />
             <Route path={PATHS.REGISTER} element={<Register />} />

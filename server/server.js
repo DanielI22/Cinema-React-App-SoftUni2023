@@ -1341,7 +1341,13 @@
         }
     };
     var seedData = {
+        favourites: {
+
+        },
         reservations: {
+
+        },
+        reviews: {
 
         },
         movies: {

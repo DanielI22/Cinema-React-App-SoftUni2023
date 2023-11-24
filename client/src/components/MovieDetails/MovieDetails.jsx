@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './MovieDetails.module.css';
 import { Link } from 'react-router-dom';
@@ -6,26 +6,50 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import * as movieService from "../../services/movieService";
+import * as favouriteService from "../../services/favouriteService";
 import { formatIsoDate } from "../../utils/functions"
 import { genreToString } from '../../utils/functions';
 import { PATHS } from '../../utils/constants';
-import Spinner from '../../components/Spinner/Spinner';
-import ReviewArea from '../../components/ReviewArea/ReviewArea';
+import Spinner from '../Spinner/Spinner';
+import ReviewArea from '../ReviewArea/ReviewArea';
+import AuthContext from '../../contexts/authContext';
+import { toast } from 'react-toastify';
 
 
 export default function MovieDetails() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
+    const [favourite, setFavourite] = useState(null);
+    const { isAuthenticated, userId } = useContext(AuthContext);
+
+    useEffect(() => {
+        favouriteService.getFavourite(userId, movieId)
+            .then(result => setFavourite(result))
+            .catch(err => toast.error(err))
+    }, [userId, movieId])
 
     useEffect(() => {
         movieService.getOne(movieId)
             .then(result => setMovie(result))
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err))
     }, [movieId]);
 
     if (!movie) {
         return <Spinner />;
     }
+
+    const handleFavouriteClick = async () => {
+        if (favourite) {
+            await favouriteService.deleteFavourite(favourite._id)
+            setFavourite(null);
+        } else {
+            const favouriteData = {
+                movieId: movieId,
+            };
+            const favourite = await favouriteService.addFavourite(favouriteData);
+            setFavourite(favourite);
+        }
+    };
 
     return (
         <div className={styles.movieDetails}>
@@ -35,12 +59,13 @@ export default function MovieDetails() {
                     <h1 className={styles.title}>{movie.title} ({movie.year})</h1>
                     <p className={styles.genre}>{genreToString(movie.genre)}</p>
                     <p className={styles.description}>{movie.description}</p>
-                    <div className={styles.favouritesContainer}>
-                        <p>Add to Favourites </p>
-                        <button className={styles.favouritesButton}>
+                    {isAuthenticated && <div className={styles.favouritesContainer}>
+                        <p>Add to Favourites</p>
+                        <button className={`${styles.favouritesButton} ${favourite ? styles.favouriteActive : ''}`}
+                            onClick={handleFavouriteClick}>
                             <FontAwesomeIcon icon={faStar} />
                         </button>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className={styles.additionalInfo}>

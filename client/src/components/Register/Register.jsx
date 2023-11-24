@@ -24,9 +24,8 @@ export default function Register() {
             setError('Passwords do not match!');
             return
         }
-
+        
         setError('');
-
         registerSubmitHandler({ username, email, password })
     };
 

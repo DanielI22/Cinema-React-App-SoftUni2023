@@ -5,27 +5,42 @@ import styles from "./ReviewArea.module.css"
 import AuthContext from "../../contexts/authContext";
 import ReviewList from "../ReviewList/ReviewList";
 import { useParams } from "react-router-dom";
+import DeleteModal from "../DeleteModal/DeleteModal";
+import { REVIEWS_PER_PAGE } from "../../utils/constants";
 
 export default function ReviewArea() {
     const { movieId } = useParams();
     const [reviewText, setReviewText] = useState('');
     const [reviews, setReviews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [reviewsPerPage] = useState(5);
+    const [reviewsPerPage] = useState(REVIEWS_PER_PAGE);
     const { isAuthenticated, username } = useContext(AuthContext);
     const [reviewsCount, setReviewsCount] = useState(0);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [currentReviewId, setCurrentReviewId] = useState(null);
+    const [updatePage, setUpdatePage] = useState(false);
 
     useEffect(() => {
         reviewService.getReviewsCount(movieId)
             .then(result => setReviewsCount(result))
-            .catch(err => console.log(err))
-    }, [movieId, reviews])
+            .catch(err => toast.error(err))
+    }, [movieId])
 
     useEffect(() => {
         reviewService.getMovieReviews(movieId, (currentPage - 1) * reviewsPerPage, reviewsPerPage)
             .then(result => setReviews(result))
-            .catch(err => console.log(err))
-    }, [movieId, currentPage, reviewsPerPage, reviews])
+            .catch(err => toast.error(err))
+    }, [movieId, currentPage, reviewsPerPage, updatePage])
+
+    const openDeleteModal = (reviewId) => {
+        setShowDeleteModal(true);
+        setCurrentReviewId(reviewId);
+    };
+
+    const closeDeleteModal = () => {
+        setShowDeleteModal(false);
+        setCurrentReviewId(null);
+    };
 
     const onSubmitReview = async () => {
         if (!reviewText.trim()) {
@@ -38,14 +53,16 @@ export default function ReviewArea() {
             };
             const review = await reviewService.addReview(reviewData);
             review.owner = { username };
-            toast.success('Review added successfuly', {
+            toast.success('Review added successfully', {
                 position: "top-center",
                 autoClose: 4000,
             });
 
             setReviews([review, ...reviews]);
+            setReviewsCount(prevCount => prevCount + 1);
             setReviewText('');
             setCurrentPage(1);
+            setUpdatePage(prev => !prev);
         } catch (error) {
             toast.error('Erorr adding review: ' + error.message, {
                 position: "top-center",
@@ -58,7 +75,10 @@ export default function ReviewArea() {
         try {
             await reviewService.deleteReview(reviewId);
             setReviews(reviews.filter(review => review._id !== reviewId));
-            toast.success('Review deleted successfuly', {
+            setReviewsCount(prevCount => prevCount - 1);
+            setCurrentPage(1);
+            setUpdatePage(prev => !prev);
+            toast.success('Review deleted successfully', {
                 position: "top-center",
                 autoClose: 4000,
             });
@@ -68,6 +88,7 @@ export default function ReviewArea() {
                 autoClose: false,
             });
         }
+        closeDeleteModal();
     };
 
     const pageNumbers = [];
@@ -84,7 +105,12 @@ export default function ReviewArea() {
                     <button onClick={onSubmitReview} className={styles.submitButton}>Send</button>
                 </>)}
             <div className={styles.reviewList}>
-                <ReviewList reviews={reviews} onDeleteReview={onDeleteReview} />
+                <ReviewList reviews={reviews} onDeleteReview={openDeleteModal} />
+                <DeleteModal 
+                showModal={showDeleteModal}
+                onConfirm={() => onDeleteReview(currentReviewId)}
+                onCancel={closeDeleteModal}
+            />
             </div>
             <nav>
                 <ul className={styles.pagination}>

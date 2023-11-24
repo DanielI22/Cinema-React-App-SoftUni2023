@@ -62,6 +62,10 @@
     color: #00a8ff;
 }
 
+.favouriteActive {
+    color: #00a8ff;
+}
+
 .startTime {
     margin-bottom: 10px;
     font-size: 2rem;

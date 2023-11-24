@@ -5,9 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 import { TOTAL_ROWS, SEATS_PER_ROW, MAX_SEATS, PATHS } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
-import  *  as reservationService from '../../services/reservationService'
-import  *  as movieService from '../../services/movieService'
-import Spinner from '../../components/Spinner/Spinner';
+import * as reservationService from '../../services/reservationService'
+import * as movieService from '../../services/movieService'
+import Spinner from '../Spinner/Spinner';
 
 export default function Booking() {
     const { movieId } = useParams();
@@ -27,20 +27,20 @@ export default function Booking() {
     useEffect(() => {
         setIsLoading(true)
         const fetchReservations = async () => {
-          try {
-            const distinctSeats = await reservationService.GetMovieSeats(movieId);
-            setReservedSeats(distinctSeats);
-            setIsLoading(false);
-          } catch (error) {
-            toast.error('Fail to fetch reservated seats: ' + error.message, {
-                position: "top-center",
-                autoClose: false,
-            });
-          }
+            try {
+                const distinctSeats = await reservationService.getMovieSeats(movieId);
+                setReservedSeats(distinctSeats);
+                setIsLoading(false);
+            } catch (error) {
+                toast.error('Fail to fetch reservated seats: ' + error.message, {
+                    position: "top-center",
+                    autoClose: false,
+                });
+            }
         };
-    
+
         fetchReservations();
-      }, [movieId]);
+    }, [movieId]);
 
     const isSeatReserved = (seatId) => reservedSeats.includes(seatId);
     const isSeatSelected = (seatId) => selectedSeats.includes(seatId);
@@ -103,6 +103,7 @@ export default function Booking() {
             const reservationData = {
                 movieId: movieId,
                 seats: selectedSeats,
+                totalPrice: totalPrice
             };
             await reservationService.addReservation(reservationData);
             toast.success('Your Reservation is completed. For more information see Reservations', {
@@ -110,10 +111,7 @@ export default function Booking() {
                 autoClose: 6000,
             });
         } catch (error) {
-            toast.error('Reservation failed: ' + error.message, {
-                position: "top-center",
-                autoClose: false,
-            });
+            toast.error('Reservation failed: ' + error.message);
 
         }
         navigate(PATHS.HOME);

@@ -26,8 +26,8 @@ export default function Header() {
                                 {username} <FontAwesomeIcon icon={faCaretDown} />
                             </button>
                             <div className={styles.dropdownContent}>
-                                <Link to="/reservations">Reservations</Link>
-                                <Link to="/favourites">Favourites</Link>
+                                <Link to={PATHS.RESERVATIONS}>Reservations</Link>
+                                <Link to={PATHS.FAVOURITES}>Favourites</Link>
                             </div>
                         </div>
                         <Link to={PATHS.LOGOUT}>Log out</Link>

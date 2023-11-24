@@ -4,6 +4,7 @@ import * as movieService from "../../services/movieService";
 import { useState, useEffect } from "react";
 import styles from "./MovieCarousel.module.css"
 import Spinner from "../Spinner/Spinner";
+import { toast } from "react-toastify";
 
 export default function MovieCarousel() {
     const [movies, setMovies] = useState([]);
@@ -11,7 +12,7 @@ export default function MovieCarousel() {
     useEffect(() => {
         movieService.getAll()
             .then(result => setMovies(result))
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err))
     }, []);
 
     const sliderSettings = {

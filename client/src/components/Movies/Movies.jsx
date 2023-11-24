@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import * as movieService from "../../services/movieService";
 import styles from "./Movies.module.css";
-import MovieCard from "../../components/MovieCard/MovieCard";
-import Spinner from "../../components/Spinner/Spinner";
+import MovieCard from "../MovieCard/MovieCard";
+import Spinner from "../Spinner/Spinner";
+import { toast } from "react-toastify";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
@@ -19,7 +20,7 @@ export default function Movies() {
                 setIsLoading(false);
             })
             .catch(err => {
-                console.log(err);
+                toast.error(err)
                 setIsLoading(false);
             });
     }, []);
