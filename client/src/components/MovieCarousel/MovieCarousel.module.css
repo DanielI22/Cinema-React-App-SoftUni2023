@@ -1,5 +1,5 @@
 .carouselContainer {
-    margin: 3rem 0 5rem;
+    margin: 3rem 0;
 }
 
 .customArrowNext::before, .customArrowPrev::before {

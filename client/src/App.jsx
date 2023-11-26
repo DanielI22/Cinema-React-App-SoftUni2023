@@ -31,8 +31,8 @@ function App() {
             <Route path={PATHS.HOME} element={<Home />} />
             <Route path={PATHS.MOVIES} element={<Movies />} />
             <Route path={`${PATHS.MOVIES}/:movieId`} element={<MovieDetails />} />
-            <Route path={PATHS.RESERVATIONS} element={<Reservations />} />
-            <Route path={PATHS.FAVOURITES} element={<Favourites />} />
+            <Route path={PATHS.RESERVATIONS} element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
+            <Route path={PATHS.FAVOURITES} element={<ProtectedRoute><Favourites /></ProtectedRoute>} />
             <Route path={`${PATHS.MOVIES}/:movieId${PATHS.BOOKING}`} element={<ProtectedRoute><Booking /></ProtectedRoute>} />
             <Route path={PATHS.LOGIN} element={<Login />} />
             <Route path={PATHS.REGISTER} element={<Register />} />

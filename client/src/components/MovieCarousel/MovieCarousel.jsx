@@ -21,7 +21,6 @@ export default function MovieCarousel() {
         speed: 600,
         slidesToShow: 4,
         slidesToScroll: 1,
-        draggable: false,
         autoplay: true,
         autoplaySpeed: 3000,
         nextArrow: <SampleNextArrow />,

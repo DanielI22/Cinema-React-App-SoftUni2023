@@ -7,15 +7,16 @@ import AuthContext from '../../contexts/authContext';
 import { toast } from 'react-toastify';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import { RESERVATIONS_PER_PAGE } from '../../utils/constants';
+import useDeleteModal from '../../hooks/useDeleteModal';
 
 export default function Reservations() {
     const { userId } = useContext(AuthContext);
     const [reservations, setReservations] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [selectedReservationId, setSelectedReservationId] = useState(null);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [reservationsPerPage] = useState(RESERVATIONS_PER_PAGE);
+    const { isModalVisible, showDeleteModal, hideDeleteModal, confirmDeletion } = useDeleteModal();
+
 
     useEffect(() => {
         setIsLoading(true);
@@ -30,26 +31,15 @@ export default function Reservations() {
             });
     }, [userId]);
 
-    const openDeleteModal = (reservationId) => {
-        setShowDeleteModal(true);
-        setSelectedReservationId(reservationId);
-    };
-
-    const closeDeleteModal = () => {
-        setShowDeleteModal(false);
-        setSelectedReservationId(null);
-    };
-
-    const onCancelReservation = () => {
-        if (selectedReservationId) {
-            reservationService.deleteReservation(selectedReservationId)
+    const onCancelReservation = (reservationId) => {
+        if (reservationId) {
+            reservationService.deleteReservation(reservationId)
                 .then(() => {
-                    setReservations(reservations.filter(reservation => reservation._id !== selectedReservationId));
+                    setReservations(reservations.filter(reservation => reservation._id !== reservationId));
                     toast.success('Reservation cancelled successfully');
                 })
                 .catch(error => toast.error(error));
         }
-        closeDeleteModal();
         setCurrentPage(1);
     };
 
@@ -74,12 +64,12 @@ export default function Reservations() {
                 ) : (
                     <div className={styles.reservationsList}>
                         {currentReservations.map(reservation => (
-                            <ReservationTicket key={reservation._id} reservation={reservation} onCancelClick={openDeleteModal} />
+                            <ReservationTicket key={reservation._id} reservation={reservation} onCancelClick={showDeleteModal} />
                         ))}
                         <DeleteModal
-                            showModal={showDeleteModal}
-                            onConfirm={() => onCancelReservation()}
-                            onCancel={closeDeleteModal}
+                            showModal={isModalVisible}
+                            onConfirm={() => confirmDeletion(onCancelReservation)}
+                            onCancel={hideDeleteModal}
                         />
                         <nav>
                             <ul className={styles.pagination}>

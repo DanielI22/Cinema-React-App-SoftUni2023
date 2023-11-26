@@ -1356,108 +1356,108 @@
                 _id: "9bf31c7f-0623-4c4a-ae95-c5ed837b07ac",
                 title: "The Marvels",
                 year: "2023",
-                genre: ["Action", "Adventure", "Fantasy"],
+                genres: ["Action", "Adventure", "Fantasy"],
                 description: "Carol Danvers gets her powers entangled with those of Kamala Khan and Monica Rambeau, forcing them to work together to save the universe.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BM2U2YWU5NWMtOGI2Ni00MGMwLWFkNjItMjgyZWMxNjllNTMzXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
                 price: 12.50,
-                startTime: "2023-11-08T19:00:00Z",
-                createdAt: "2023-11-01T08:00:00Z"
+                startTime: "2023-11-08T19:00",
+                createdAt: "2023-11-01T08:00"
             },
             "a9b7ba70-a1e9-4728-ad2c-60b868b4f184": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "a9b7ba70-a1e9-4728-ad2c-60b868b4f184",
                 title: "The Dark Knight",
                 year: "2008",
-                genre: ["Action", "Crime", "Drama"],
+                genres: ["Action", "Crime", "Drama"],
                 description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
                 price: 10.00,
-                startTime: "2023-11-08T16:30:00Z",
-                createdAt: "2023-11-01T09:30:00Z"
+                startTime: "2023-11-08T16:30",
+                createdAt: "2023-11-01T09:30"
             },
             "e1faffb3-7e4e-4bb8-8e17-ec6ecec7c5f5": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "e1faffb3-7e4e-4bb8-8e17-ec6ecec7c5f5",
                 title: "Interstellar",
                 year: "2014",
-                genre: ["Adventure", "Drama", "Sci-Fi"],
+                genres: ["Adventure", "Drama", "Sci-Fi"],
                 description: "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
                 price: 15.00,
-                startTime: "2023-11-09T20:45:00Z",
-                createdAt: "2023-11-01T10:15:00Z"
+                startTime: "2023-11-09T20:45",
+                createdAt: "2023-11-01T10:15"
             },
             "d1fe173d-5b1f-40a7-8b5a-4511f1a0c8c3": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "d1fe173d-5b1f-40a7-8b5a-4511f1a0c8c3",
                 title: "The Shawshank Redemption",
                 year: "1994",
-                genre: ["Drama"],
+                genres: ["Drama"],
                 description: "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
                 price: 8.50,
-                startTime: "2023-11-09T17:30:00Z",
-                createdAt: "2023-11-01T11:00:00Z"
+                startTime: "2023-11-09T17:30",
+                createdAt: "2023-11-01T11:00"
             },
             "c4f8462e-b631-4ebd-8e10-e49f5494f7e4": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "c4f8462e-b631-4ebd-8e10-e49f5494f7e4",
                 title: "Star Wars: Episode IV - A New Hope",
                 year: "1977",
-                genre: ["Action", "Adventure", "Fantasy"],
+                genres: ["Action", "Adventure", "Fantasy"],
                 description: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth ...",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_SX300.jpg",
                 price: 11.00,
-                startTime: "2023-11-10T18:00:00Z",
-                createdAt: "2023-11-01T12:45:00Z"
+                startTime: "2023-11-10T18:00",
+                createdAt: "2023-11-01T12:45"
             },
             "d2f8b02b-4d97-4f0c-b0f8-2d3f9f5c6d91": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "d2f8b02b-4d97-4f0c-b0f8-2d3f9f5c6d91",
                 title: "Inception",
                 year: "2010",
-                genre: ["Action", "Adventure", "Sci-Fi"],
+                genres: ["Action", "Adventure", "Sci-Fi"],
                 description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
                 price: 12.50,
-                startTime: "2023-11-12T20:00:00Z",
-                createdAt: "2023-11-02T10:30:00Z"
+                startTime: "2023-11-12T20:00",
+                createdAt: "2023-11-02T10:30"
             },
             "b1c3c9df-a499-406c-97d8-3ea9f3aef4f7": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "b1c3c9df-a499-406c-97d8-3ea9f3aef4f7",
                 title: "The Matrix",
                 year: "1999",
-                genre: ["Action", "Sci-Fi"],
+                genres: ["Action", "Sci-Fi"],
                 description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
                 posterUrl: "https://m.media-amazon.com/images/I/51EG732BV3L._AC_.jpg",
                 price: 10.00,
-                startTime: "2023-11-14T19:30:00Z",
-                createdAt: "2023-11-03T09:15:00Z"
+                startTime: "2023-11-14T19:30",
+                createdAt: "2023-11-03T09:15"
             },
             "e9f4b1c5-d36e-4d02-b557-a3cc17bf9231": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "e9f4b1c5-d36e-4d02-b557-a3cc17bf9231",
                 title: "Jurassic Park",
                 year: "1993",
-                genre: ["Action", "Adventure", "Sci-Fi"],
+                genres: ["Action", "Adventure", "Sci-Fi"],
                 description: "During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX300.jpg",
                 price: 9.00,
-                startTime: "2023-11-16T21:00:00Z",
-                createdAt: "2023-11-04T11:20:00Z"
+                startTime: "2023-11-16T21:00",
+                createdAt: "2023-11-04T11:20"
             },
             "7f8c49ae-8e3c-4f3e-a2e8-d9efbe2a1f3e": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "7f8c49ae-8e3c-4f3e-a2e8-d9efbe2a1f3e",
                 title: "Avatar",
                 year: "2009",
-                genre: ["Action", "Adventure", "Fantasy"],
+                genres: ["Action", "Adventure", "Fantasy"],
                 description: "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg",
                 price: 13.50,
-                startTime: "2023-11-18T18:00:00Z",
-                createdAt: "2023-11-05T12:10:00Z"
+                startTime: "2023-11-18T18:00",
+                createdAt: "2023-11-05T12:10"
             }
         },
     };

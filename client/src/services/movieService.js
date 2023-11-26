@@ -12,3 +12,12 @@ export const getOne = async (movieId) => {
     const result = await request.get(`${baseUrl}/${movieId}`)
     return result;
 };
+
+export const deleteMovie = async (movieId) => {
+    await request.remove(`${baseUrl}/${movieId}`);
+}
+
+export const editMovie = async (movieId, movieData) => {
+    const result = await request.put(`${baseUrl}/${movieId}`, movieData);
+    return result;
+};

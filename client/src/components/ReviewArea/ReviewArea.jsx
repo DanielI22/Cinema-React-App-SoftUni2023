@@ -7,6 +7,7 @@ import ReviewList from "../ReviewList/ReviewList";
 import { useParams } from "react-router-dom";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { REVIEWS_PER_PAGE } from "../../utils/constants";
+import useDeleteModal from "../../hooks/useDeleteModal";
 
 export default function ReviewArea() {
     const { movieId } = useParams();
@@ -16,9 +17,9 @@ export default function ReviewArea() {
     const [reviewsPerPage] = useState(REVIEWS_PER_PAGE);
     const { isAuthenticated, username } = useContext(AuthContext);
     const [reviewsCount, setReviewsCount] = useState(0);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [currentReviewId, setCurrentReviewId] = useState(null);
     const [updatePage, setUpdatePage] = useState(false);
+    const { isModalVisible, showDeleteModal, hideDeleteModal, confirmDeletion } = useDeleteModal();
+
 
     useEffect(() => {
         reviewService.getReviewsCount(movieId)
@@ -31,16 +32,6 @@ export default function ReviewArea() {
             .then(result => setReviews(result))
             .catch(err => toast.error(err))
     }, [movieId, currentPage, reviewsPerPage, updatePage])
-
-    const openDeleteModal = (reviewId) => {
-        setShowDeleteModal(true);
-        setCurrentReviewId(reviewId);
-    };
-
-    const closeDeleteModal = () => {
-        setShowDeleteModal(false);
-        setCurrentReviewId(null);
-    };
 
     const onSubmitReview = async () => {
         if (!reviewText.trim()) {
@@ -64,7 +55,7 @@ export default function ReviewArea() {
             setCurrentPage(1);
             setUpdatePage(prev => !prev);
         } catch (error) {
-            toast.error('Erorr adding review: ' + error.message, {
+            toast.error('Error adding review: ' + error.message, {
                 position: "top-center",
                 autoClose: false,
             });
@@ -88,7 +79,6 @@ export default function ReviewArea() {
                 autoClose: false,
             });
         }
-        closeDeleteModal();
     };
 
     const pageNumbers = [];
@@ -98,19 +88,19 @@ export default function ReviewArea() {
 
     return (
         <div className={styles.reviewArea}>
-            {isAuthenticated && (
+            {isAuthenticated ? (
                 <>
                     <textarea className={styles.reviewTextarea} placeholder="Leave a review..." value={reviewText}
                         onChange={(e) => setReviewText(e.target.value)}></textarea>
                     <button onClick={onSubmitReview} className={styles.submitButton}>Send</button>
-                </>)}
+                </>) :  <p className={styles.noSignIn}>Sign in to leave a review.</p>}
             <div className={styles.reviewList}>
-                <ReviewList reviews={reviews} onDeleteReview={openDeleteModal} />
-                <DeleteModal 
-                showModal={showDeleteModal}
-                onConfirm={() => onDeleteReview(currentReviewId)}
-                onCancel={closeDeleteModal}
-            />
+                <ReviewList reviews={reviews} onDeleteReview={showDeleteModal} />
+                <DeleteModal
+                    showModal={isModalVisible}
+                    onConfirm={() => confirmDeletion(onDeleteReview)}
+                    onCancel={hideDeleteModal}
+                />
             </div>
             <nav>
                 <ul className={styles.pagination}>

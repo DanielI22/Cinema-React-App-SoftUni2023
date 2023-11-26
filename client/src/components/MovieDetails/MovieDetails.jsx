@@ -59,7 +59,7 @@ export default function MovieDetails() {
                 <img src={movie.posterUrl} alt={movie.title} className={styles.poster} />
                 <div className={styles.info}>
                     <h1 className={styles.title}>{movie.title} ({movie.year})</h1>
-                    <p className={styles.genre}>{genreToString(movie.genre)}</p>
+                    <p className={styles.genre}>{genreToString(movie.genres)}</p>
                     <p className={styles.description}>{movie.description}</p>
                     {isAuthenticated && <div className={styles.favouritesContainer}>
                         <p>Add to Favourites</p>

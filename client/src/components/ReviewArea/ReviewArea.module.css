@@ -59,3 +59,9 @@
     border-color: #00a8ff;
     color: #fff;
 }
+
+.noSignIn {
+    text-align: start;
+    color: #555;
+    font-style: italic;
+}

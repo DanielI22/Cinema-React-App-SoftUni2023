@@ -9,7 +9,7 @@ export default function MovieCard({ movie }) {
         <img src={movie.posterUrl} alt={movie.title} className={styles.poster} />
         <div className={styles.info}>
           <h3 className={styles.title}>{movie.title}</h3>
-          <p className={styles.genre}>{genreToString(movie.genre)}</p>
+          <p className={styles.genre}>{genreToString(movie.genres)}</p>
         </div>
       </Link>
     </div>

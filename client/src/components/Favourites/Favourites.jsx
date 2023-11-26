@@ -6,14 +6,16 @@ import { toast } from 'react-toastify';
 import AuthContext from '../../contexts/authContext';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import Spinner from '../Spinner/Spinner';
+import useDeleteModal from '../../hooks/useDeleteModal';
 
 export default function Favourites() {
     const { userId } = useContext(AuthContext);
     const [favourites, setFavourites] = useState([]);
-    const [selectedFavouriteId, setSelectedFavouriteId] = useState(null);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    // const [selectedFavouriteId, setSelectedFavouriteId] = useState(null);
+    // const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [sortCriterion, setSortCriterion] = useState('_createdOn');
+    const { isModalVisible, showDeleteModal, hideDeleteModal, confirmDeletion } = useDeleteModal();
 
     useEffect(() => {
         setIsLoading(true);
@@ -23,26 +25,25 @@ export default function Favourites() {
     }, [userId]);
 
 
-    const openDeleteModal = (favouriteId) => {
-        setShowDeleteModal(true);
-        setSelectedFavouriteId(favouriteId);
-    };
+    // const openDeleteModal = (favouriteId) => {
+    //     setShowDeleteModal(true);
+    //     setSelectedFavouriteId(favouriteId);
+    // };
 
-    const closeDeleteModal = () => {
-        setShowDeleteModal(false);
-        setSelectedFavouriteId(null);
-    };
+    // const closeDeleteModal = () => {
+    //     setShowDeleteModal(false);
+    //     setSelectedFavouriteId(null);
+    // };
 
-    const onRemoveFavourite = async () => {
-        if (selectedFavouriteId) {
-            favouriteService.deleteFavourite(selectedFavouriteId)
+    const onRemoveFavourite = async (favouriteId) => {
+        if (favouriteId) {
+            favouriteService.deleteFavourite(favouriteId)
                 .then(() => {
-                    setFavourites(favourites.filter(favourite => favourite._id !== selectedFavouriteId));
+                    setFavourites(favourites.filter(favourite => favourite._id !== favouriteId));
                     toast.success('Removed from favourites successfully');
                 })
                 .catch(error => toast.error(error));
         }
-        closeDeleteModal();
     };
 
     const sortedFavourites = [...favourites].sort((a, b) => {
@@ -89,7 +90,7 @@ export default function Favourites() {
                                 <MovieCard movie={favourite.movie} />
                                 <button
                                     className={styles.removeFavouriteButton}
-                                    onClick={() => openDeleteModal(favourite._id)}>
+                                    onClick={() => showDeleteModal(favourite._id)}>
                                     Remove
                                 </button>
                             </div>
@@ -99,9 +100,9 @@ export default function Favourites() {
             </div>
 
             <DeleteModal
-                showModal={showDeleteModal}
-                onConfirm={onRemoveFavourite}
-                onCancel={closeDeleteModal}
+                showModal={isModalVisible}
+                onConfirm={() => confirmDeletion(onRemoveFavourite)}
+                onCancel={hideDeleteModal}
             />
         </div>
     );

@@ -5,8 +5,18 @@ export function formatIsoDate(isoDate) {
     const year = date.getFullYear();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
-
     return `${hours}:${minutes} ${day}/${month}/${year}`;
+}
+
+export function formatDateTimeForInput (dateTime) {
+    const dateObj = new Date(dateTime);
+    const year = dateObj.getFullYear();
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+    const day = dateObj.getDate().toString().padStart(2, '0');
+    const hours = dateObj.getHours().toString().padStart(2, '0');
+    const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
 export function genreToString(genres) {
