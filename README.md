@@ -6,7 +6,7 @@ ReactCineX is a web application designed for movie enthusiasts. It allows users 
 # Features
 * Browse Movies: Users can browse through a list of movies, each presented on a card with essential details.
 * Movie Details: Clicking on a movie card opens a detailed view with more information about the movie.
-* Add Movies: Admin users can edit and add new movies to the collection, either manually or by fetching details from the OMDB API using the IMDb tag or title.
+* Update Movies: Admin users can edit and add new movies to the collection, either manually or by fetching details from the OMDB API using the IMDb tag or title.
 * Favorites: Users can add movies to their favorites list for quick access.
 * Reservations: Registered users can make reservations for movie screenings.
 * Reviews: Registered users can leave a review in the movie details section.
