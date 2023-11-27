@@ -9,7 +9,7 @@ export function formatIsoDate(isoDate) {
 }
 
 export function formatDateTimeForInput (dateTime) {
-    const dateObj = new Date(dateTime);
+    const dateObj = dateTime === null ? new Date() : new Date(dateTime);
     const year = dateObj.getFullYear();
     const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
     const day = dateObj.getDate().toString().padStart(2, '0');
@@ -19,6 +19,10 @@ export function formatDateTimeForInput (dateTime) {
     return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-export function genreToString(genres) {
+export function genresToString(genres) {
     return genres.join(", ");
+}
+
+export function genresToArray(genres) {
+    return genres.split(', ');
 }

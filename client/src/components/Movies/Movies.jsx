@@ -8,6 +8,7 @@ import AuthContext from "../../contexts/authContext";
 import useDeleteModal from "../../hooks/useDeleteModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import MovieModal from "../MovieModal/MovieModal";
+import AddMovieAPIModal from "../AddMovieAPI/AddMovieAPIModal";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
@@ -18,6 +19,7 @@ export default function Movies() {
     const { isAdmin } = useContext(AuthContext);
     const { isModalVisible, showDeleteModal, hideDeleteModal, confirmDeletion } = useDeleteModal();
     const [modalShow, setModalShow] = useState(false);
+    const [APImodalShow, setAPIModalShow] = useState(false);
     const [currentMovie, setCurrentMovie] = useState(null);
 
     useEffect(() => {
@@ -42,6 +44,10 @@ export default function Movies() {
             (selectedGenre === '' || movie.genres.includes(selectedGenre));
     });
 
+    const onAddAPIClick = () => {
+        setAPIModalShow(true);
+    }
+
     const onAddEditClick = (movie) => {
         setCurrentMovie(movie);
         setModalShow(true);
@@ -55,14 +61,15 @@ export default function Movies() {
                 toast.success('Movie edited successfully', { position: "top-center", autoClose: 4000 });
             } else {
                 const result = await movieService.addMovie(movieData);
-                setMovies(...movies, result);
+                setMovies([result, ...movies]);
                 toast.success('Movie added successfully', { position: "top-center", autoClose: 4000 });
             }
         }
         catch (error) {
-            toast.error('Error while updating movie: ' + error.message, { position: "top-center", autoClose: false });
+            toast.error('Error while updating movies: ' + error.message, { position: "top-center", autoClose: false });
         }
         setModalShow(false);
+        setAPIModalShow(false);
         setSelectedGenre('');
     };
 
@@ -108,7 +115,7 @@ export default function Movies() {
                             Add Movie
                         </button>
                         <button
-                            onClick={() => onAddEditClick(null)}
+                            onClick={() => onAddAPIClick()}
                             className={styles.addMovieButton}>
                             Add Movie API
                         </button>
@@ -141,6 +148,11 @@ export default function Movies() {
                 onClose={() => setModalShow(false)}
                 movie={currentMovie}
                 allGenres={genres}
+                onSave={onSave}
+            />
+            <AddMovieAPIModal
+                show={APImodalShow}
+                onClose={() => setAPIModalShow(false)}
                 onSave={onSave}
             />
             <DeleteModal

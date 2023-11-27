@@ -11,8 +11,6 @@ import useDeleteModal from '../../hooks/useDeleteModal';
 export default function Favourites() {
     const { userId } = useContext(AuthContext);
     const [favourites, setFavourites] = useState([]);
-    // const [selectedFavouriteId, setSelectedFavouriteId] = useState(null);
-    // const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [sortCriterion, setSortCriterion] = useState('_createdOn');
     const { isModalVisible, showDeleteModal, hideDeleteModal, confirmDeletion } = useDeleteModal();
@@ -23,17 +21,6 @@ export default function Favourites() {
             .then(result => { setFavourites(result); setIsLoading(false) })
             .catch(error => { toast.error(error); setIsLoading(false) });
     }, [userId]);
-
-
-    // const openDeleteModal = (favouriteId) => {
-    //     setShowDeleteModal(true);
-    //     setSelectedFavouriteId(favouriteId);
-    // };
-
-    // const closeDeleteModal = () => {
-    //     setShowDeleteModal(false);
-    //     setSelectedFavouriteId(null);
-    // };
 
     const onRemoveFavourite = async (favouriteId) => {
         if (favouriteId) {

@@ -1361,7 +1361,7 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BM2U2YWU5NWMtOGI2Ni00MGMwLWFkNjItMjgyZWMxNjllNTMzXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
                 price: 12.50,
                 startTime: "2023-11-08T19:00",
-                createdAt: "2023-11-01T08:00"
+                _createdOn: 1701079815213
             },
             "a9b7ba70-a1e9-4728-ad2c-60b868b4f184": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1373,7 +1373,7 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
                 price: 10.00,
                 startTime: "2023-11-08T16:30",
-                createdAt: "2023-11-01T09:30"
+                _createdOn: 1701079815213
             },
             "e1faffb3-7e4e-4bb8-8e17-ec6ecec7c5f5": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1385,7 +1385,7 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
                 price: 15.00,
                 startTime: "2023-11-09T20:45",
-                createdAt: "2023-11-01T10:15"
+                _createdOn: 1701079815213
             },
             "d1fe173d-5b1f-40a7-8b5a-4511f1a0c8c3": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1397,19 +1397,19 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
                 price: 8.50,
                 startTime: "2023-11-09T17:30",
-                createdAt: "2023-11-01T11:00"
+                _createdOn: 1701079815213
             },
             "c4f8462e-b631-4ebd-8e10-e49f5494f7e4": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 _id: "c4f8462e-b631-4ebd-8e10-e49f5494f7e4",
-                title: "Star Wars: Episode IV - A New Hope",
+                title: "Star Wars - A New Hope",
                 year: "1977",
                 genres: ["Action", "Adventure", "Fantasy"],
                 description: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth ...",
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_SX300.jpg",
                 price: 11.00,
                 startTime: "2023-11-10T18:00",
-                createdAt: "2023-11-01T12:45"
+                _createdOn: 1701079815213
             },
             "d2f8b02b-4d97-4f0c-b0f8-2d3f9f5c6d91": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1421,7 +1421,7 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
                 price: 12.50,
                 startTime: "2023-11-12T20:00",
-                createdAt: "2023-11-02T10:30"
+                _createdOn: 1701079815213
             },
             "b1c3c9df-a499-406c-97d8-3ea9f3aef4f7": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1433,7 +1433,7 @@
                 posterUrl: "https://m.media-amazon.com/images/I/51EG732BV3L._AC_.jpg",
                 price: 10.00,
                 startTime: "2023-11-14T19:30",
-                createdAt: "2023-11-03T09:15"
+                _createdOn: 1701079815213
             },
             "e9f4b1c5-d36e-4d02-b557-a3cc17bf9231": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1445,7 +1445,7 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX300.jpg",
                 price: 9.00,
                 startTime: "2023-11-16T21:00",
-                createdAt: "2023-11-04T11:20"
+                _createdOn: 1701079815213
             },
             "7f8c49ae-8e3c-4f3e-a2e8-d9efbe2a1f3e": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
@@ -1457,7 +1457,7 @@
                 posterUrl: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg",
                 price: 13.50,
                 startTime: "2023-11-18T18:00",
-                createdAt: "2023-11-05T12:10"
+                _createdOn: 1701079815213
             }
         },
     };

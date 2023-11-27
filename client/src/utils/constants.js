@@ -17,3 +17,4 @@ export const SEATS_PER_ROW = 5;
 export const MAX_SEATS = 3;
 export const REVIEWS_PER_PAGE = 5;
 export const RESERVATIONS_PER_PAGE = 3;
+export const API_KEY = 'e2c3c97d';

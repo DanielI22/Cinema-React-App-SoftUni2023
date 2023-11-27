@@ -5,7 +5,7 @@ import { formatDateTimeForInput } from "../../utils/functions";
 export default function MovieModal({ show, onClose, movie, onSave, allGenres }) {
     const [formData, setFormData] = useState({
         title: '',
-        year: '',
+        year: '1900',
         genres: [],
         description: '',
         posterUrl: '',
@@ -24,31 +24,33 @@ export default function MovieModal({ show, onClose, movie, onSave, allGenres }) 
     useEffect(() => {
         if (movie) {
             setFormData({
-                title: movie.title || '',
-                year: movie.year || '',
-                genres: movie.genres || [],
-                description: movie.description || '',
-                posterUrl: movie.posterUrl || '',
-                price: movie.price || '',
-                startTime: movie.startTime ? formatDateTimeForInput(movie.startTime) : '',
-                createdAt: movie.createdAt
+                title: movie.title,
+                year: movie.year,
+                genres: movie.genres,
+                description: movie.description,
+                posterUrl: movie.posterUrl,
+                price: movie.price,
+                startTime: formatDateTimeForInput(movie.startTime),
             });
         } else {
             setFormData({
                 title: '',
-                year: '',
+                year: '1900',
                 genres: [],
                 description: '',
                 posterUrl: '',
-                price: '',
-                startTime: ''
+                price: 0,
+                startTime: formatDateTimeForInput(null)
             })
         }
     }, [movie]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const isNumericField = name === 'price';
+        const formattedValue = isNumericField ? parseFloat(value) || 0 : value;
+
+        setFormData({ ...formData, [name]: formattedValue });
     };
 
     const handleGenreChange = (genre) => {
@@ -83,7 +85,7 @@ export default function MovieModal({ show, onClose, movie, onSave, allGenres }) 
             <div className={styles.modalContent}>
                 <form onSubmit={handleSubmit}>
                     <label>Title:</label>
-                    <input name="title" value={formData.title} onChange={handleChange} />
+                    <input name="title" value={formData.title} onChange={handleChange} required/>
 
                     <label>Year:</label>
                     <input name="year" value={formData.year} onChange={handleChange} type="number" />

@@ -7,8 +7,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import * as movieService from "../../services/movieService";
 import * as favouriteService from "../../services/favouriteService";
-import { formatIsoDate } from "../../utils/functions"
-import { genreToString } from '../../utils/functions';
+import { genresToString, formatIsoDate } from '../../utils/functions';
 import { PATHS } from '../../utils/constants';
 import Spinner from '../Spinner/Spinner';
 import ReviewArea from '../ReviewArea/ReviewArea';
@@ -59,7 +58,7 @@ export default function MovieDetails() {
                 <img src={movie.posterUrl} alt={movie.title} className={styles.poster} />
                 <div className={styles.info}>
                     <h1 className={styles.title}>{movie.title} ({movie.year})</h1>
-                    <p className={styles.genre}>{genreToString(movie.genres)}</p>
+                    <p className={styles.genre}>{genresToString(movie.genres)}</p>
                     <p className={styles.description}>{movie.description}</p>
                     {isAuthenticated && <div className={styles.favouritesContainer}>
                         <p>Add to Favourites</p>
