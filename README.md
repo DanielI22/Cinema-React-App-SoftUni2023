@@ -1,6 +1,4 @@
 # ReactCineX
-
-# Description
 ReactCineX is a web application designed for movie enthusiasts. It allows users to browse a collection of movies, view detailed information about each movie, and manage reservations for movie screenings. The app features a clean, user-friendly interface and provides functionalities such as searching for movies, adding movies to favorites, and making reservations. The app implements pagination, sorting, and filtering where convenient.
 
 # Features
