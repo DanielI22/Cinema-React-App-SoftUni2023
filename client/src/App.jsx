@@ -16,9 +16,10 @@ import { ToastContainer } from 'react-toastify';
 import { PATHS } from './utils/constants';
 import { AuthProvider } from './contexts/authContext';
 import Logout from './components/Logout/Logout';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from './components/AuthGuards/ProtectedRoute';
 import Favourites from './components/Favourites/Favourites';
 import Reservations from './components/Reservations/Reservations';
+import GuestRoute from './components/AuthGuards/GuestRoute';
 
 function App() {
   return (
@@ -34,9 +35,9 @@ function App() {
             <Route path={PATHS.RESERVATIONS} element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
             <Route path={PATHS.FAVOURITES} element={<ProtectedRoute><Favourites /></ProtectedRoute>} />
             <Route path={`${PATHS.MOVIES}/:movieId${PATHS.BOOKING}`} element={<ProtectedRoute><Booking /></ProtectedRoute>} />
-            <Route path={PATHS.LOGIN} element={<Login />} />
-            <Route path={PATHS.REGISTER} element={<Register />} />
-            <Route path={PATHS.LOGOUT} element={<Logout />} />
+            <Route path={PATHS.LOGIN} element={<GuestRoute><Login /></GuestRoute>} />
+            <Route path={PATHS.REGISTER} element={<GuestRoute><Register /></GuestRoute>} />
+            <Route path={PATHS.LOGOUT} element={<ProtectedRoute><Logout /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

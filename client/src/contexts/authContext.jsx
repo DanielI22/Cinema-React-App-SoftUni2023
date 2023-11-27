@@ -19,7 +19,7 @@ export const AuthProvider = ({
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken);
             localStorage.setItem('isAdmin', result.isAdmin);
-            navigate(PATHS.HOME)
+            navigate(-1)
         } catch (error) {
             toast.error(error.message || 'Login failed', {
                 position: "top-center",

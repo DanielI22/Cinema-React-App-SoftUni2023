@@ -10,7 +10,7 @@ export default function Home() {
       </p>
 
       <h2 className={styles.upcomingShowingsTitle}>Upcoming Showings</h2>
-
+    
       <MovieCarousel />
      
     </div>
