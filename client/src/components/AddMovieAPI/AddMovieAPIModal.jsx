@@ -72,7 +72,9 @@ export default function AddMovieAPIModal({ show, onClose, onSave }) {
         <div className={styles.modalBackground}>
             <div className={styles.modalContent}>
                 <form onSubmit={handleSave}>
-                    <label>IMDb ID:</label>
+                    <label>
+                        <a href="https://m.imdb.com/chart/top/?ref_=nv_mv_250" target="_blank" rel="noopener noreferrer">IMDb ID:</a>
+                    </label>
                     <input
                         type="text"
                         value={imdbID}

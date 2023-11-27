@@ -24,7 +24,7 @@ ReactCineX is a web application designed for movie enthusiasts. It allows users 
 4. Start the development server
 
 # Admin usage
-* To gain access to the admin feature, log in with
+* To gain access to the admin features, log in with
 * email: admin@abv.bg
 * pass: admin
 * On Our Movies page, you will see buttons for adding, editing and deleting movies from the collection.

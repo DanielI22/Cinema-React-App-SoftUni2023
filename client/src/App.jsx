@@ -19,7 +19,7 @@ import Logout from './components/Logout/Logout';
 import ProtectedRoute from './components/AuthGuards/ProtectedRoute';
 import Favourites from './components/Favourites/Favourites';
 import Reservations from './components/Reservations/Reservations';
-import GuestRoute from './components/AuthGuards/GuestRoute';
+import GuestRoute from './components/AuthGuards/PublicRoute';
 
 function App() {
   return (
