@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../utils/constants";
+import { API_BASE_URL, API_KEY } from "../utils/constants";
 import * as request from "../lib/request"
 
 const baseUrl = `${API_BASE_URL}/movies`;
@@ -26,3 +26,14 @@ export const addMovie = async (movieData) => {
     const result = await request.post(`${baseUrl}`, movieData);
     return result;
 };
+
+export const getMovieAPI = async (imdbID, title, year) => {
+    const apiKey = API_KEY;
+    const url = imdbID
+        ? `https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`
+        : `https://www.omdbapi.com/?t=${title}&y=${year}&apikey=${apiKey}`;
+
+    const response = await fetch(url);
+    return await response.json();
+}
+

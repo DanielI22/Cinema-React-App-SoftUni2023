@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Spinner from '../Spinner/Spinner';
 import styles from './AddMovieAPIModal.module.css';
-import { API_KEY } from '../../utils/constants';
 import { formatDateTimeForInput, genresToArray } from '../../utils/functions';
 import MovieCard from '../MovieCard/MovieCard';
+import * as movieService from '../../services/movieService'
 
 export default function AddMovieAPIModal({ show, onClose, onSave }) {
     const [imdbID, setImdbID] = useState('');
@@ -20,13 +20,8 @@ export default function AddMovieAPIModal({ show, onClose, onSave }) {
             e.preventDefault();
             setError('');
             setIsLoading(true);
-            const apiKey = API_KEY;
-            const url = imdbID
-                ? `https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`
-                : `https://www.omdbapi.com/?t=${title}&y=${year}&apikey=${apiKey}`;
-
-            const response = await fetch(url);
-            const data = await response.json();
+            
+            const data = await movieService.getMovieAPI(imdbID, title, year);
 
             if (data.Response === "True") {
                 setMovieDetails(data);
