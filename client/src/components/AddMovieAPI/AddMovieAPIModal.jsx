@@ -38,7 +38,6 @@ export default function AddMovieAPIModal({ show, onClose, onSave }) {
     const handleSave = (e) => {
         e.preventDefault();
         if (movieDetails) {
-            console.log(movieDetails);
             const movieData = {
                 title: movieDetails.Title,
                 year: movieDetails.Year,

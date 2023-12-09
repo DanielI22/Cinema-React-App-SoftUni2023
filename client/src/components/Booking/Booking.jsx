@@ -21,7 +21,7 @@ export default function Booking() {
     useEffect(() => {
         movieService.getOne(movieId)
             .then(result => setPrice(result.price))
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err))
     }, [movieId]);
 
     useEffect(() => {
