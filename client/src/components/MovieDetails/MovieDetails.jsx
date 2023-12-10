@@ -43,7 +43,7 @@ export default function MovieDetails() {
         fetchMovie();
     }, [movieId]);
 
-    if(notFound) {
+    if (notFound) {
         return <NotFound />
     }
     if (!movie) {
